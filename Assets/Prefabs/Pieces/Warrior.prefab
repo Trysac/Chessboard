@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 2146348305741723237}
   - component: {fileID: 2146348305741723232}
   - component: {fileID: 2146348305741723239}
-  - component: {fileID: 2146348305741723238}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2146348305741723238
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146348305741723236}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2146348306225044962
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,9 +94,9 @@ GameObject:
   - component: {fileID: 2146348306225044963}
   - component: {fileID: 2146348306225045021}
   - component: {fileID: 2146348306225045020}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NameText (TMP)
-  m_TagString: Untagged
+  m_TagString: PieceName
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,7 +226,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2146348306502261031}
-  m_Layer: 0
+  - component: {fileID: -181541767928159097}
+  - component: {fileID: 7356987805413805128}
+  m_Layer: 7
   m_Name: Warrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,6 +250,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &-181541767928159097
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146348306502261030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &7356987805413805128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146348306502261030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921070dca813c224ba2493c0ba3ac235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warriorData: {fileID: 0}
+  characterMeshFilter: {fileID: 2146348307071593886}
+  warriorNameText: {fileID: 2146348306225045020}
 --- !u!1 &2146348307071593826
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,10 +289,9 @@ GameObject:
   - component: {fileID: 2146348307071593827}
   - component: {fileID: 2146348307071593886}
   - component: {fileID: 2146348307071593885}
-  - component: {fileID: 2146348307071593884}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ChessPiece
-  m_TagString: Untagged
+  m_TagString: Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,20 +359,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2146348307071593884
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146348307071593826}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &2146348307661967093
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +371,7 @@ GameObject:
   - component: {fileID: 2146348307661967089}
   - component: {fileID: 2146348307661967088}
   - component: {fileID: 2146348307661967095}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ChessPieceNameCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
