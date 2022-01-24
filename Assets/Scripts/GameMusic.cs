@@ -12,14 +12,28 @@ public class GameMusic : MonoBehaviour
 
     #region // Private Variables
 
+    [Header("Audio Clips To Play")]
     [SerializeField] AudioClip battleMusic;
-    [SerializeField] AudioClip advebtureMusic;
+
+    [Header("Sources")]
+    [SerializeField] AudioSource battleAudioSorce;
+
+    private AudioSource advebtureAudioSorce;
 
     #endregion
 
     // --------------------------------------------------------
 
     #region // Public Methods
+
+    public void PlayBattleDrumsMusic()
+    {
+        if (BattleAudioSorce.clip.Equals(null) && !BattleMusic.Equals(null))
+        {
+            BattleAudioSorce.clip = BattleMusic;
+        }
+    }
+
     #endregion
 
     // --------------------------------------------------------
@@ -28,9 +42,10 @@ public class GameMusic : MonoBehaviour
 
     private void Awake()
     {
-        if (gameMusicInstance.Equals(null)) { gameMusicInstance = this; }
-        else { Destroy(this.gameObject); }
+        gameMusicInstance = this; // @TODO Set acorrect Singlento Pattern for this instance
+        advebtureAudioSorce = this.GetComponent<AudioSource>();
     }
+
 
     #endregion
 
@@ -39,7 +54,7 @@ public class GameMusic : MonoBehaviour
     #region // Variables Properties
 
     public AudioClip BattleMusic { get => battleMusic; set => battleMusic = value; }
-    public AudioClip AdvebtureMusic { get => advebtureMusic; set => advebtureMusic = value; }
+    public AudioSource BattleAudioSorce { get => battleAudioSorce; set => battleAudioSorce = value; }
 
     #endregion
 
