@@ -28,7 +28,7 @@ public class GameMusic : MonoBehaviour
 
     public void PlayBattleDrumsMusic()
     {
-        if (BattleAudioSorce.clip.Equals(null) && !BattleMusic.Equals(null))
+        if (BattleAudioSorce.clip == null && BattleMusic != null)
         {
             BattleAudioSorce.clip = BattleMusic;
         }
