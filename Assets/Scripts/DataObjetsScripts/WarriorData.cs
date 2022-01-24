@@ -12,7 +12,7 @@ public class WarriorData : ScriptableObject
     [SerializeField] string characterDescription;
 
     [Header("Character configuration")]
-    [SerializeField] PieceType pieceType;
+    [SerializeField] PieceType characterType;
 
     #endregion
 
@@ -23,7 +23,7 @@ public class WarriorData : ScriptableObject
     public Mesh Character3DModel { get => character3DModel; set => character3DModel = value; }
     public string CharacterName { get => characterName; set => characterName = value; }
     public string CharacterDescription { get => characterDescription; set => characterDescription = value; }
-    public PieceType PieceType { get => pieceType; set => pieceType = value; }
+    public PieceType CharacterType { get => characterType; set => characterType = value; }
 
     #endregion
 

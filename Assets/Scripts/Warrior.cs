@@ -13,12 +13,20 @@ public class Warrior : MonoBehaviour
     [SerializeField] TextMeshProUGUI warriorNameText;
 
     private BoxCollider myBoxCollider;
+    Ray ray;
     
     #endregion
 
     // --------------------------------------------------------
 
     #region // Public Methods
+
+    public void MoveWarrior(Vector3 newPosition)
+    {
+        print("Moviendo Pieza");
+        this.transform.position = newPosition;
+    }
+
     #endregion
 
     // --------------------------------------------------------

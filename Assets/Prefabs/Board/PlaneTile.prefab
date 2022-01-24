@@ -91,7 +91,7 @@ BoxCollider:
   m_GameObject: {fileID: 4055435575170425568}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 4055435575516831674}
   - component: {fileID: 4055435575516831675}
   - component: {fileID: 4055435575516831672}
+  - component: {fileID: 4496441730204652362}
   m_Layer: 6
   m_Name: PlaneTile
   m_TagString: Untagged
@@ -193,6 +194,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &4496441730204652362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4055435575516831678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a38bcd193d32bd44897638ea1080881a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveVisual: {fileID: 4055435575729812678}
+  attackVisual: {fileID: 4055435575170425568}
 --- !u!1 &4055435575729812678
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +299,7 @@ BoxCollider:
   m_GameObject: {fileID: 4055435575729812678}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
