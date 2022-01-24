@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameMusic : MonoBehaviour
@@ -13,7 +11,14 @@ public class GameMusic : MonoBehaviour
     // --------------------------------------------------------
 
     #region // Private Variables
+
+    [SerializeField] AudioClip battleMusic;
+    [SerializeField] AudioClip advebtureMusic;
+
     #endregion
+
+    // --------------------------------------------------------
+
     #region // Public Methods
     #endregion
 
@@ -32,6 +37,10 @@ public class GameMusic : MonoBehaviour
     // --------------------------------------------------------
 
     #region // Variables Properties
+
+    public AudioClip BattleMusic { get => battleMusic; set => battleMusic = value; }
+    public AudioClip AdvebtureMusic { get => advebtureMusic; set => advebtureMusic = value; }
+
     #endregion
 
 }
