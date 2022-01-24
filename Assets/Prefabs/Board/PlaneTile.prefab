@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4055435575170425564}
   - component: {fileID: 4055435575170425565}
   - component: {fileID: 4055435575170425570}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual_Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,8 +107,8 @@ GameObject:
   - component: {fileID: 4055435575516831674}
   - component: {fileID: 4055435575516831675}
   - component: {fileID: 4055435575516831672}
-  m_Layer: 0
-  m_Name: Tile (1)
+  m_Layer: 6
+  m_Name: PlaneTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 4055435575729812674}
   - component: {fileID: 4055435575729812675}
   - component: {fileID: 4055435575729812672}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual_Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
