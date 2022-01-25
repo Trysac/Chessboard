@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
             {
                 if (Mouse.current.leftButton.isPressed)
                 {
+                    BoardTile.isMovementCalculated = false;
                     WarriorPieceSelected = hit.collider.GetComponent<Warrior>();
                 }
             }
@@ -94,8 +95,7 @@ public class GameManager : MonoBehaviour
             if (Vector3.Distance(WarriorPieceSelected.transform.position, cursorSelectedTile.transform.position) != Mathf.Epsilon)
             {
                 WarriorPieceSelected.MoveWarrior(cursorSelectedTile.transform.position);
-                cursorSelectedTile.GetComponent<BoardTile>().IsMoveValid = false;
-                warriorPieceSelected = null;
+                CancelWarriorMovement();
             }
         }
     }
@@ -105,7 +105,11 @@ public class GameManager : MonoBehaviour
         if (WarriorPieceSelected != null)
         {
             print("Cancelar Movimiento de pieza");
+            cursorSelectedTile.GetComponent<BoardTile>().IsMoveValid = false;           
+            cursorSelectedTile.GetComponent<BoardTile>().IsVisualActive = false;
+            BoardTile.isMovementCalculated = false;
             WarriorPieceSelected = null;
+
         }
     }
 

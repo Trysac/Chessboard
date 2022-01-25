@@ -23,7 +23,6 @@ public class Warrior : MonoBehaviour
 
     public void MoveWarrior(Vector3 newPosition)
     {
-        print("Moviendo Pieza");
         this.transform.position = newPosition;
     }
 

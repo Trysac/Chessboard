@@ -6,7 +6,8 @@ public class BoardTile : MonoBehaviour
 {
     #region // Public Variables
 
-    
+    public static bool isMovementCalculated = false;
+    public static int tilesReported = 0;
 
     #endregion
 
@@ -27,13 +28,16 @@ public class BoardTile : MonoBehaviour
     private GameManager gameManager;
     private WarriorData warriorData;
 
-    private bool isCalculated = false;
+    private bool isVisualActive;
 
     #endregion
 
     // --------------------------------------------------------
 
     #region // Public Methods
+
+
+
     #endregion
 
     // --------------------------------------------------------
@@ -42,6 +46,7 @@ public class BoardTile : MonoBehaviour
 
     private void Start()
     {
+        IsVisualActive = false;
         IsMoveValid = false;
         tilePosition = this.transform.position;
         gameManager = GameManager.gameManagerInstance;
@@ -49,56 +54,61 @@ public class BoardTile : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.IsGameStarted && !gameManager.IsGameOver)
+        if (gameManager.IsGameStarted && !gameManager.IsGameOver && !isMovementCalculated)
         {
-            if (gameManager.WarriorPieceSelected != null)
-            {
-
-                warriorData = gameManager.WarriorPieceSelected.WarriorData;
-                moveVisual.SetActive(TestIfMoveIsValid());
-
-                //if (!isCalculated)
-                //{
-                //    warriorData = gameManager.WarriorPieceSelected.WarriorData;
-                //    moveVisual.SetActive(TestIfMoveIsValid());
-                //    isCalculated = true;
-                //}
-            }
-            //else
-            //{
-            //    isCalculated = false;
-            //    moveVisual.SetActive(isCalculated);
-            //}
+            CalculateMovementValidation();
         }
     }
 
-    private bool TestIfMoveIsValid()
+    private void CalculateMovementValidation()
     {
-        print(warriorData.CharacterType);
+        if (gameManager.WarriorPieceSelected != null)
+        {
+            warriorData = gameManager.WarriorPieceSelected.WarriorData;
+            TestIfMoveIsValid();
+            tilesReported++;
+            if (tilesReported >= 64)
+            {
+                isMovementCalculated = true;
+                tilesReported = 0;
+            }
+            
+            moveVisual.SetActive(IsVisualActive);
+        }
+        else
+        {
+            moveVisual.SetActive(false);
+        }
+    }
+
+
+    private void TestIfMoveIsValid()
+    {
+        
+        IsVisualActive = false;
+
+        print("Calculando");
+
+        if (warriorData == null) { return; }
+
         switch (warriorData.CharacterType)
         {
             case PieceType.Pawn:
                 {
                     Vector3 warriorPosition = gameManager.WarriorPieceSelected.transform.position;
-                    if (Vector3.Distance(tilePosition, warriorPosition) == 1) 
+                    if (Vector3.Distance(tilePosition, warriorPosition) == 1)
                     {
-                        if (this.tilePosition.z > warriorPosition.z) 
+                        if (this.tilePosition.z > warriorPosition.z)
                         {
                             IsMoveValid = true;
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
+                            IsVisualActive = true;
                         }
                     }
-                    else { return false; }             
-                }
-            default:
-                {
-                    return false;
+                    break;
                 }
         }
+
+        warriorData = null;      
     }
 
     #endregion
@@ -111,6 +121,7 @@ public class BoardTile : MonoBehaviour
     public bool IsPieceInTile { get => isPieceInTile; set => isPieceInTile = value; }
     public Warrior PieceInTile { get => pieceInTile; set => pieceInTile = value; }
     public bool IsMoveValid { get => isMoveValid; set => isMoveValid = value; }
+    public bool IsVisualActive { get => isVisualActive; set => isVisualActive = value; }
 
     #endregion
 }
