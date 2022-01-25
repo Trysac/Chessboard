@@ -14,10 +14,15 @@ public class BoardTile : MonoBehaviour
 
     #region // Private Variables
 
+    [Header("General Parameters")]
     [SerializeField] GameObject moveVisual;
-    [SerializeField] GameObject attackVisual;
+    [SerializeField] bool isMoveValid;
 
-    private bool isMoveValid;
+    [Header("Enemy Info")]
+    [SerializeField] GameObject attackVisual;
+    [SerializeField] bool isPieceInTile;
+    [SerializeField] Warrior pieceInTile;
+
     private Vector3 tilePosition;
     private GameManager gameManager;
     private WarriorData warriorData;
@@ -37,7 +42,7 @@ public class BoardTile : MonoBehaviour
 
     private void Start()
     {
-        isMoveValid = false;
+        IsMoveValid = false;
         tilePosition = this.transform.position;
         gameManager = GameManager.gameManagerInstance;
     }
@@ -48,18 +53,22 @@ public class BoardTile : MonoBehaviour
         {
             if (gameManager.WarriorPieceSelected != null)
             {
-                if (!isCalculated)
-                {
-                    warriorData = gameManager.WarriorPieceSelected.WarriorData;
-                    moveVisual.SetActive(TestIfMoveIsValid());
-                    isCalculated = true;
-                }
+
+                warriorData = gameManager.WarriorPieceSelected.WarriorData;
+                moveVisual.SetActive(TestIfMoveIsValid());
+
+                //if (!isCalculated)
+                //{
+                //    warriorData = gameManager.WarriorPieceSelected.WarriorData;
+                //    moveVisual.SetActive(TestIfMoveIsValid());
+                //    isCalculated = true;
+                //}
             }
-            else
-            {
-                isCalculated = false;
-                moveVisual.SetActive(isCalculated);
-            }
+            //else
+            //{
+            //    isCalculated = false;
+            //    moveVisual.SetActive(isCalculated);
+            //}
         }
     }
 
@@ -71,7 +80,18 @@ public class BoardTile : MonoBehaviour
             case PieceType.Pawn:
                 {
                     Vector3 warriorPosition = gameManager.WarriorPieceSelected.transform.position;
-                    if (Vector3.Distance(tilePosition, warriorPosition) == 1) { return true; }
+                    if (Vector3.Distance(tilePosition, warriorPosition) == 1) 
+                    {
+                        if (this.tilePosition.z > warriorPosition.z) 
+                        {
+                            IsMoveValid = true;
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
                     else { return false; }             
                 }
             default:
@@ -88,6 +108,9 @@ public class BoardTile : MonoBehaviour
     #region // Variables Properties
 
     public Vector3 TilePosition { get => tilePosition; set => tilePosition = value; }
+    public bool IsPieceInTile { get => isPieceInTile; set => isPieceInTile = value; }
+    public Warrior PieceInTile { get => pieceInTile; set => pieceInTile = value; }
+    public bool IsMoveValid { get => isMoveValid; set => isMoveValid = value; }
 
     #endregion
 }

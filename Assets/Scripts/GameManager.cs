@@ -89,12 +89,13 @@ public class GameManager : MonoBehaviour
         //    warriorPieceSelected = hit.collider.GetComponent<Warrior>();
         //}
 
-        if (warriorPieceSelected != null)
+        if (warriorPieceSelected != null && cursorSelectedTile.GetComponent<BoardTile>().IsMoveValid)
         {
             if (Vector3.Distance(WarriorPieceSelected.transform.position, cursorSelectedTile.transform.position) != Mathf.Epsilon)
             {
                 WarriorPieceSelected.MoveWarrior(cursorSelectedTile.transform.position);
-                // warriorPieceSelected = null;
+                cursorSelectedTile.GetComponent<BoardTile>().IsMoveValid = false;
+                warriorPieceSelected = null;
             }
         }
     }
